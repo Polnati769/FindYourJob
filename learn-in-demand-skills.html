@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn In-Demand Skills</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+    .navbar {
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #00d8ff;
+    }
+    .card-skill {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      border-radius: 20px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card-skill:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+    }
+    .card-skill h4 {
+      color: #00d8ff;
+      font-weight: 600;
+    }
+    .card-skill ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card-skill li {
+      margin-bottom: 8px;
+    }
+    .card-skill li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+    .card-skill li a:hover {
+      color: #00d8ff;
+    }
+    .card-skill i {
+      margin-right: 8px;
+      color: #00d8ff;
+    }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      z-index: 99;
+      background-color: #00d8ff;
+      color: #fff;
+      border: none;
+      outline: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #backToTop:hover {
+      background-color: #00bcd4;
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🌟 In-Demand Skills</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <h1>🚀 Learn In-Demand Skills</h1>
+    <p class="lead">Boost your career with top skills and trusted resources</p>
+    <!-- Search Box -->
+    <div class="container mt-3">
+      <input id="searchBox" class="form-control" type="text" placeholder="🔍 Search skills...">
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <div class="container mt-4">
+    <div class="row g-4" id="skillsContainer">
+      <!-- Skill Cards (10 skills) -->
+      <!-- Communication Skills -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-skill h-100">
+          <h4>🗣 Communication Skills</h4>
+          <p>Improve speaking, writing, and confidence.</p>
+          <ul>
+            <li><a href="https://www.coursera.org/courses?query=communication%20skills" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Coursera</a></li>
+            <li><a href="https://www.udemy.com/topic/communication-skills/" target="_blank"><i class="fa-solid fa-chalkboard-teacher"></i> Udemy</a></li>
+            <li><a href="https://www.toastmasters.org/" target="_blank"><i class="fa-solid fa-users"></i> Toastmasters</a></li>
+            <li><a href="https://www.youtube.com/@EffectiveCommunicationSkills" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Technical Skills -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-skill h-100">
+          <h4>💻 Technical Skills</h4>
+          <p>Learn coding, IT, and emerging tech.</p>
+          <ul>
+            <li><a href="https://www.codecademy.com/" target="_blank"><i class="fa-solid fa-code"></i> Codecademy</a></li>
+            <li><a href="https://www.kaggle.com/learn" target="_blank"><i class="fa-solid fa-chart-line"></i> Kaggle</a></li>
+            <li><a href="https://www.w3schools.com/" target="_blank"><i class="fa-solid fa-laptop-code"></i> W3Schools</a></li>
+            <li><a href="https://www.youtube.com/@freecodecamp" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Leadership Skills -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-skill h-100">
+          <h4>👑 Leadership Skills</h4>
+          <p>Develop team management & decision-making.</p>
+          <ul>
+            <li><a href="https://www.edx.org/learn/leadership" target="_blank"><i class="fa-solid fa-university"></i> edX</a></li>
+            <li><a href="https://hbr.org/" target="_blank"><i class="fa-solid fa-book-open"></i> Harvard Business Review</a></li>
+            <li><a href="https://www.mindtools.com/" target="_blank"><i class="fa-solid fa-lightbulb"></i> MindTools</a></li>
+            <li><a href="https://www.youtube.com/@LeadershipNudge" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Problem Solving -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-skill h-100">
+          <h4>🔍 Problem Solving</h4>
+          <p>Sharpen analytical & decision-making abilities.</p>
+          <ul>
+            <li><a href="https://www.coursera.org/learn/problem-solving" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Coursera</a></li>
+            <li><a href="https://www.mindtools.com/pages/main/newMN_TMC.htm" target="_blank"><i class="fa-solid fa-brain"></i> MindTools</a></li>
+            <li><a href="https://www.khanacademy.org/" target="_blank"><i class="fa-solid fa-school"></i> Khan Academy</a></li>
+            <li><a href="https://www.youtube.com/@TED" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Creativity -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="card-skill h-100">
+          <h4>🎨 Creativity</h4>
+          <p>Boost imagination & innovative thinking.</p>
+          <ul>
+            <li><a href="https://www.skillshare.com/en/browse/creativity" target="_blank"><i class="fa-solid fa-palette"></i> Skillshare</a></li>
+            <li><a href="https://www.creativebloq.com/" target="_blank"><i class="fa-solid fa-brush"></i> CreativeBloq</a></li>
+            <li><a href="https://www.behance.net/" target="_blank"><i class="fa-solid fa-pen-nib"></i> Behance</a></li>
+            <li><a href="https://www.youtube.com/@TheFuturAcademy" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Critical Thinking -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="card-skill h-100">
+          <h4>🧠 Critical Thinking</h4>
+          <p>Analyze situations & make logical choices.</p>
+          <ul>
+            <li><a href="https://www.futurelearn.com/courses/logical-and-critical-thinking" target="_blank"><i class="fa-solid fa-brain"></i> FutureLearn</a></li>
+            <li><a href="https://ed.ted.com/" target="_blank"><i class="fa-solid fa-lightbulb"></i> TED-Ed</a></li>
+            <li><a href="https://www.open.edu/openlearn/" target="_blank"><i class="fa-solid fa-book"></i> OpenLearn</a></li>
+            <li><a href="https://www.youtube.com/@Academind" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Emotional Intelligence -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="700">
+        <div class="card-skill h-100">
+          <h4>❤️ Emotional Intelligence</h4>
+          <p>Understand & manage emotions effectively.</p>
+          <ul>
+            <li><a href="https://www.psychologytoday.com/us/basics/emotional-intelligence" target="_blank"><i class="fa-solid fa-heart"></i> Psychology Today</a></li>
+            <li><a href="https://positivepsychology.com/emotional-intelligence-training/" target="_blank"><i class="fa-solid fa-smile"></i> Positive Psychology</a></li>
+            <li><a href="https://www.coursera.org/learn/emotional-intelligence" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Coursera</a></li>
+            <li><a href="https://www.youtube.com/@DanielGolemanEI" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Time Management -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="800">
+        <div class="card-skill h-100">
+          <h4>⏳ Time Management</h4>
+          <p>Organize, plan, and maximize productivity.</p>
+          <ul>
+            <li><a href="https://www.mindtools.com/pages/main/newMN_HTE.htm" target="_blank"><i class="fa-solid fa-clock"></i> MindTools</a></li>
+            <li><a href="https://todoist.com/productivity-methods" target="_blank"><i class="fa-solid fa-list-check"></i> Todoist</a></li>
+            <li><a href="https://asana.com/resources/time-management" target="_blank"><i class="fa-solid fa-calendar"></i> Asana</a></li>
+            <li><a href="https://www.youtube.com/@ThomasFrank" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Adaptability -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="900">
+        <div class="card-skill h-100">
+          <h4>🔄 Adaptability</h4>
+          <p>Thrive in changing environments & learn fast.</p>
+          <ul>
+            <li><a href="https://www.coursera.org/learn/adaptability" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Coursera</a></li>
+            <li><a href="https://hbr.org/topic/adaptability" target="_blank"><i class="fa-solid fa-book-open"></i> Harvard Business Review</a></li>
+            <li><a href="https://www.mindtools.com/" target="_blank"><i class="fa-solid fa-lightbulb"></i> MindTools</a></li>
+            <li><a href="https://www.youtube.com/@SuccessInsider" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Search filter
+    document.getElementById('searchBox').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const cards = document.querySelectorAll('#skillsContainer .col-md-6, #skillsContainer .col-lg-4');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+
+    // Back to Top button
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopBtn.style.display = "block";
+        backToTopBtn.style.opacity = 1;
+      } else {
+        backToTopBtn.style.opacity = 0;
+        setTimeout(() => { backToTopBtn.style.display = "none"; }, 300);
+      }
+    };
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>

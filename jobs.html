@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamJob - Jobs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .job-card { 
+      border-radius: 10px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, background-color 0.4s ease, opacity 0.5s ease;
+      margin-bottom: 20px;
+    
+    }
+    .job-card.show { opacity: 1; transform: translateY(0); }
+    .job-card.animate, .job-card.show:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2);}
+
+    .sector.it .job-card { background: #bd5b10; }      
+    .sector.healthcare .job-card { background: #28a745; } 
+    .sector.finance .job-card { background: #ffc107; } 
+    .sector.education .job-card { background: #17a2b8; } 
+    .sector.engineering .job-card { background: #6f42c1; } 
+    .sector.marketing .job-card { background: #fd7e14; } 
+    .sector.sports .job-card { background: #e83e8c; } 
+    .sector.aviation .job-card { background: #20c997; } 
+    .sector.logistics .job-card { background: #fd7e14; } 
+    .sector.ngo .job-card { background: #6610f2; } 
+
+    .sector-heading { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">DreamJob</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="jobs.html">Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="trends.html">Job Trends</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Jobs Section -->
+  <section class="container my-5 pt-5">
+    <h2 class="mb-4">Featured Jobs by Sector</h2>
+
+    <!-- Filter + Search -->
+    <div class="row mb-4">
+      <div class="col-md-6 mb-2">
+        <select id="sectorFilter" class="form-select">
+          <option value="category">Category</option>
+          <option value="all">📂 All Sectors</option>
+          <option value="it">💻 Information Technology</option>
+          <option value="healthcare">🏥 Healthcare</option>
+          <option value="finance">💰 Finance & Banking</option>
+          <option value="education">📚 Education</option>
+          <option value="engineering">⚙ Engineering</option>
+          <option value="marketing">📈 Sales & Marketing</option>
+          <option value="sports">⚽ Sports & Fitness</option>
+          <option value="aviation">✈ Aviation & Airlines</option>
+          <option value="logistics">🚚 Logistics & Supply Chain</option>
+          <option value="ngo">🌱 NGO & Social Sector</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-2">
+        <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search job title or company...">
+      </div>
+    </div>
+
+    <div id="jobList">
+
+      <!-- ================= IT Sector ================= -->
+      <h4 class="sector-heading">💻 Information Technology</h4>
+      <div class="row mb-4 sector it">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Web Developer</h5><p>ABC Tech | Hyderabad</p></div></div><br><br>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Software Engineer</h5><p>Infosys | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Data Scientist</h5><p>TCS | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>UI/UX Designer</h5><p>DesignHub | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Cloud Architect</h5><p>Wipro | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Cybersecurity Specialist</h5><p>SecureNet | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Database Administrator</h5><p>Oracle | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>DevOps Engineer</h5><p>Capgemini | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>AI/ML Engineer</h5><p>MindTree | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Network Engineer</h5><p>Cisco | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Frontend Developer</h5><p>TechFusion | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Backend Developer</h5><p>Cognizant | Bangalore</p></div></div>
+      </div>
+
+      <!-- ================= Healthcare Sector ================= -->
+      <h4 class="sector-heading">🏥 Healthcare</h4>
+      <div class="row mb-4 sector healthcare">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Doctor</h5><p>Apollo Hospitals | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Nurse</h5><p>Care Hospitals | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Lab Technician</h5><p>MedPlus | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Pharmacist</h5><p>Aster Pharmacy | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Physiotherapist</h5><p>Sunshine Hospitals | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Medical Researcher</h5><p>BioLabs | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Radiologist</h5><p>Fortis Healthcare | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Cardiologist</h5><p>Max Hospital | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Dentist</h5><p>Smile Dental | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Nutritionist</h5><p>HealthFirst | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Psychologist</h5><p>MindCare | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Surgeon</h5><p>Global Hospital | Delhi</p></div></div>
+      </div>
+
+      <!-- ================= Finance Sector ================= -->
+      <h4 class="sector-heading">💰 Finance & Banking</h4>
+      <div class="row mb-4 sector finance">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Accountant</h5><p>HDFC Bank | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Financial Analyst</h5><p>KPMG | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Investment Banker</h5><p>Goldman Sachs | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Auditor</h5><p>PWC | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Loan Officer</h5><p>SBI | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Tax Consultant</h5><p>Deloitte | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Risk Analyst</h5><p>ICICI Bank | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Credit Analyst</h5><p>Axis Bank | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Wealth Manager</h5><p>HSBC | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Budget Analyst</h5><p>EY | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Bank Teller</h5><p>Punjab National Bank | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Financial Planner</h5><p>Franklin Templeton | Hyderabad</p></div></div>
+      </div>
+
+      <!-- ================= Education Sector ================= -->
+      <h4 class="sector-heading">📚 Education</h4>
+      <div class="row mb-4 sector education">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Teacher</h5><p>Delhi Public School | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Professor</h5><p>JNTU | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Academic Counselor</h5><p>EduCare | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Librarian</h5><p>State Library | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Lecturer</h5><p>Osmania University | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Education Consultant</h5><p>LearnHub | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Special Educator</h5><p>Bright Minds | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Trainer</h5><p>SkillUp | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Exam Coordinator</h5><p>CBSE | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Tutor</h5><p>LearnFast | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Research Assistant</h5><p>IGNOU | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Education Officer</h5><p>Ministry of Education | Mumbai</p></div></div>
+      </div>
+
+      <!-- ================= Engineering Sector ================= -->
+      <h4 class="sector-heading">⚙ Engineering</h4>
+      <div class="row mb-4 sector engineering">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Civil Engineer</h5><p>L&T | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Mechanical Engineer</h5><p>Reliance | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Electrical Engineer</h5><p>BHEL | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Project Engineer</h5><p>Siemens | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Structural Engineer</h5><p>AFCONS | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Quality Engineer</h5><p>Tata Steel | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Process Engineer</h5><p>Aditya Birla | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Design Engineer</h5><p>ABB | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Automation Engineer</h5><p>Rockwell Automation | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Instrumentation Engineer</h5><p>GE | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Maintenance Engineer</h5><p>Siemens | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Safety Engineer</h5><p>Reliance | Pune</p></div></div>
+      </div>
+
+      <!-- ================= Marketing Sector ================= -->
+      <h4 class="sector-heading">📈 Sales & Marketing</h4>
+      <div class="row mb-4 sector marketing">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Digital Marketer</h5><p>GrowthHub | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>SEO Specialist</h5><p>WebRank | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Brand Manager</h5><p>Unilever | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Content Writer</h5><p>ContentPro | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Social Media Manager</h5><p>SocialBee | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Sales Executive</h5><p>Reliance | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Market Analyst</h5><p>KPMG | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>PR Manager</h5><p>PRWorks | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Event Manager</h5><p>EventPro | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Advertising Executive</h5><p>AdWorks | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Marketing Intern</h5><p>StartUp Hub | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Affiliate Manager</h5><p>ClickBank | Hyderabad</p></div></div>
+      </div>
+
+      <!-- ================= Sports Sector ================= -->
+      <h4 class="sector-heading">⚽ Sports & Fitness</h4>
+      <div class="row mb-4 sector sports">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Fitness Trainer</h5><p>Gold's Gym | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Yoga Instructor</h5><p>YogaLife | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Sports Coach</h5><p>Cricket Academy | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Physiotherapist</h5><p>FitHealth | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Athlete Manager</h5><p>SportsHub | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Nutritionist</h5><p>HealthFirst | Pune</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Gym Manager</h5><p>Fitness World | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Personal Trainer</h5><p>FitPro | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Sports Analyst</h5><p>ESPN | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Rehabilitation Specialist</h5><p>HealFit | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Swimming Coach</h5><p>Aqua Club | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Sports Journalist</h5><p>SportsTimes | Mumbai</p></div></div>
+      </div>
+
+      <!-- ================= Aviation Sector ================= -->
+      <h4 class="sector-heading">✈ Aviation & Airlines</h4>
+      <div class="row mb-4 sector aviation">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Pilot</h5><p>IndiGo | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Flight Attendant</h5><p>Air India | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Air Traffic Controller</h5><p>DGCA | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Ground Staff</h5><p>SpiceJet | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Aeronautical Engineer</h5><p>HAL | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Cabin Crew Trainer</h5><p>GoAir | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Aircraft Maintenance</h5><p>IndiGo | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Flight Dispatcher</h5><p>AirAsia | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Operations Manager</h5><p>Vistara | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Logistics Coordinator</h5><p>SpiceJet | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Flight Safety Officer</h5><p>IndiGo | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Customer Service Exec</h5><p>Air India | Delhi</p></div></div>
+      </div>
+
+      <!-- ================= Logistics Sector ================= -->
+      <h4 class="sector-heading">🚚 Logistics & Supply Chain</h4>
+      <div class="row mb-4 sector logistics">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Logistics Manager</h5><p>DHL | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Supply Chain Analyst</h5><p>FedEx | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Warehouse Supervisor</h5><p>Blue Dart | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Inventory Manager</h5><p>Gati | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Transport Coordinator</h5><p>Flipkart | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Operations Executive</h5><p>Amazon | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Fleet Manager</h5><p>DHL | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Logistics Analyst</h5><p>FedEx | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Procurement Officer</h5><p>Gati | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Shipping Coordinator</h5><p>Blue Dart | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Customs Officer</h5><p>Amazon | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Logistics Planner</h5><p>Flipkart | Delhi</p></div></div>
+      </div>
+
+      <!-- ================= NGO Sector ================= -->
+      <h4 class="sector-heading">🌱 NGO & Social Sector</h4>
+      <div class="row mb-4 sector ngo">
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Program Manager</h5><p>CRY | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Field Officer</h5><p>Oxfam | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Fundraising Manager</h5><p>UNICEF | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Volunteer Coordinator</h5><p>Red Cross | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Social Worker</h5><p>Smile Foundation | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Communications Officer</h5><p>Plan India | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Research Analyst</h5><p>CRY | Mumbai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Project Coordinator</h5><p>Oxfam | Bangalore</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Community Mobilizer</h5><p>Red Cross | Chennai</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Advocacy Officer</h5><p>UNICEF | Hyderabad</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Program Assistant</h5><p>Plan India | Delhi</p></div></div>
+        <div class="col-md-4"><div class="card job-card p-3"><h5>Grant Writer</h5><p>Smile Foundation | Mumbai</p></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const sectorFilter = document.getElementById('sectorFilter');
+    const searchInput = document.getElementById('searchInput');
+    const sectors = document.querySelectorAll('.sector');
+
+    function filterJobs() {
+      const selected = sectorFilter.value.toLowerCase();
+      const keyword = searchInput.value.toLowerCase();
+
+      sectors.forEach(sec => {
+        let showSector = (selected === 'all' || sec.classList.contains(selected));
+        let jobs = sec.querySelectorAll('.job-card');
+        let anyVisible = false;
+
+        jobs.forEach(job => {
+          let text = job.innerText.toLowerCase();
+          let showJob = showSector && text.includes(keyword);
+          job.style.display = showJob ? 'block' : 'none';
+          if(showJob) anyVisible = true;
+          if(showJob) setTimeout(()=> job.classList.add('show'), 50);
+          else job.classList.remove('show');
+        });
+
+        sec.style.display = anyVisible ? 'flex' : 'none';
+      });
+    }
+
+    sectorFilter.addEventListener('change', filterJobs);
+    searchInput.addEventListener('input', filterJobs);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      filterJobs();
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

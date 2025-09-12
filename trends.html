@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamJob - Job Trends</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">DreamJob</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+          <li class="nav-item"><a class="nav-link active" href="trends.html">Job Trends</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Trends -->
+  <section class="container my-5 pt-5">
+    <h2 class="mb-4">Job Trends (2021–2025)</h2>
+
+    <!-- Dropdown for year -->
+    <div class="mb-3">
+      <label for="yearSelect" class="form-label fw-bold">Select Year:</label>
+      <select id="yearSelect" class="form-select w-auto d-inline-block">
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025" selected>2025</option>
+      </select>
+    </div>
+
+    <!-- Chart -->
+    <canvas id="jobChart" height="120"></canvas>
+
+    <!-- Custom Legend -->
+    <div id="chartLegend" class="mt-3"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-3 bg-light">
+    <p>© 2025 Find Your Dream Job. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Chart Script -->
+  <script>
+    const ctx = document.getElementById('jobChart').getContext('2d');
+
+    const jobData = {
+      2021: [50, 30, 20, 15, 10],
+      2022: [60, 40, 25, 20, 15],
+      2023: [70, 50, 35, 25, 20],
+      2024: [80, 55, 40, 30, 25],
+      2025: [90, 60, 45, 35, 30]
+    };
+
+    const labels = ["IT", "Healthcare", "Finance", "Education", "Engineering"];
+
+    const baseColors = [
+      "rgba(54, 162, 235, 1)",   // IT
+      "rgba(255, 99, 132, 1)",   // Healthcare
+      "rgba(255, 206, 86, 1)",   // Finance
+      "rgba(75, 192, 192, 1)",   // Education
+      "rgba(153, 102, 255, 1)"   // Engineering
+    ];
+
+    // Plugin for background shading
+    const customBackground = {
+      id: 'customBackground',
+      beforeDraw(chart) {
+        const { ctx, chartArea: { left, right, top, bottom }, scales: { x } } = chart;
+        x.ticks.forEach((tick, index) => {
+          const barArea = x.getPixelForTick(index);
+          const nextBar = x.getPixelForTick(index + 1) || right;
+          ctx.save();
+          ctx.fillStyle = baseColors[index].replace("1)", "0.08)");
+          ctx.fillRect(barArea, top, nextBar - barArea, bottom - top);
+          ctx.restore();
+        });
+      }
+    };
+
+    // Plugin for showing numbers above bars
+    const valueLabels = {
+      id: 'valueLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx, data } = chart;
+        ctx.save();
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        data.datasets[0].data.forEach((value, index) => {
+          const meta = chart.getDatasetMeta(0);
+          const bar = meta.data[index];
+          ctx.fillStyle = baseColors[index];
+          ctx.fillText(value, bar.x, bar.y - 5);
+        });
+        ctx.restore();
+      }
+    };
+
+    // Gradient fills
+    function createGradients(chart) {
+      const { ctx, chartArea } = chart;
+      if (!chartArea) return [];
+      return baseColors.map(color => {
+        const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+        gradient.addColorStop(0, color.replace("1)", "0.2)"));
+        gradient.addColorStop(1, color);
+        return gradient;
+      });
+    }
+
+    // Chart
+    let jobChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Job Demand",
+          data: jobData[2025],
+          backgroundColor: baseColors,
+          borderColor: baseColors,
+          borderWidth: 1,
+          borderRadius: { topLeft: 12, topRight: 12 }
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true }
+        },
+        animation: {
+          duration: 1200,
+          easing: 'easeOutQuart'
+        }
+      },
+      plugins: [customBackground, valueLabels]
+    });
+
+    // Apply gradients after first render
+    jobChart.options.animation.onComplete = () => {
+      jobChart.data.datasets[0].backgroundColor = createGradients(jobChart);
+      jobChart.update();
+    };
+
+    // Custom legend
+    const legendContainer = document.getElementById("chartLegend");
+    labels.forEach((label, index) => {
+      const badge = document.createElement("span");
+      badge.className = "badge me-2";
+      badge.style.backgroundColor = baseColors[index];
+      badge.style.color = "#fff";
+      badge.style.fontSize = "1rem";
+      badge.innerHTML = label;
+      legendContainer.appendChild(badge);
+    });
+
+    // Update chart on year change
+    document.getElementById("yearSelect").addEventListener("change", function() {
+      const selectedYear = this.value;
+      jobChart.data.datasets[0].data = jobData[selectedYear];
+      jobChart.update({
+        duration: 1200,
+        easing: 'easeOutQuart'
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DreamJob - Resume Builder</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+body {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
+              url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 70px;
+}
+.template-card {
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  border-radius: 12px;
+}
+.template-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+#resumeFormSection {
+  background: rgba(255,255,255,0.95);
+  padding: 20px;
+  border-radius: 15px;
+  color: #333;
+  margin-top: 20px;
+}
+h2, h4 { color: #ffdd57; }
+#resumePreview {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 12px;
+}
+#previewPhoto img { width: 100px; height: 100px; border-radius: 50%; }
+#backBtn { margin-bottom: 10px; }
+
+/* Form field styling */
+#resumeFormSection input,
+#resumeFormSection textarea {
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#resumeFormSection input:focus,
+#resumeFormSection textarea:focus {
+  border-color: #ffdd57; 
+  box-shadow: 0 0 5px rgba(255,221,87,0.5);
+  outline: none;
+}
+#resumeFormSection ::placeholder { color: #555; }
+
+/* Profile photo preview */
+#previewPhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  margin-top: 10px;
+}
+#previewPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#previewPhoto span { color: #888; }
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<div class="container">
+  <a class="navbar-brand" href="index.html">DreamJob</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+      <li class="nav-item"><a class="nav-link active" href="resume-builder.html">Resume</a></li>
+      <li class="nav-item"><a class="nav-link" href="trends.html">Job Trends</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</div>
+</nav><br>
+
+<div class="container my-5" style="margin-top:100px;">
+<h2 class="text-center mb-4"><marquee>✨ Build Your Resume ✨</marquee></h2>
+
+
+
+<!-- Show Templates Button -->
+<div class="text-center mb-4" id="showTemplatesBtnDiv">
+  <button class="btn btn-warning fw-bold" id="showTemplatesBtn">Build Your Own Resume</button>
+</div>
+
+<!-- Templates Section -->
+<div class="row mt-4 d-none" id="templatesSection">
+  <h4 class="mb-3 text-center">Choose a Template:</h4>
+  <div class="col-md-4">
+    <div class="card template-card" onclick="selectTemplate('template1')">
+      <div class="card-body text-center">
+        <h5>Template 1</h5>
+        <p>Simple & Clean</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card template-card" onclick="selectTemplate('template2')">
+      <div class="card-body text-center">
+        <h5>Template 2</h5>
+        <p>Professional (Colored Sections)</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card template-card" onclick="selectTemplate('template3')">
+      <div class="card-body text-center">
+        <h5>Template 3</h5>
+        <p>Modern (Profile Photo)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resume Form Section -->
+<div class="mt-4 d-none" id="resumeFormSection">
+  <button class="btn btn-secondary mb-3" id="backBtn">⬅ Back to Templates</button>
+  <h4 class="mb-3">Fill Your Details:</h4>
+  <form id="resumeForm">
+    <input type="text" class="form-control mb-2" placeholder="Full Name" id="name" required>
+    <input type="email" class="form-control mb-2" placeholder="Email" id="email" required>
+    <input type="text" class="form-control mb-2" placeholder="Phone Number" id="phone" required>
+    <textarea class="form-control mb-2" placeholder="Objective" id="objective"></textarea>
+    <textarea class="form-control mb-2" placeholder="Skills" id="skills"></textarea>
+    <textarea class="form-control mb-2" placeholder="Experience" id="experience"></textarea>
+    <textarea class="form-control mb-2" placeholder="Academic Qualification" id="academic"></textarea>
+    <textarea class="form-control mb-2" placeholder="Certifications" id="certifications"></textarea>
+    <input type="url" class="form-control mb-2" placeholder="LinkedIn Profile URL" id="linkedin">
+    <input type="url" class="form-control mb-2" placeholder="GitHub Profile URL" id="github">
+    <textarea class="form-control mb-2" placeholder="Strengths" id="strengths"></textarea>
+    <textarea class="form-control mb-2" placeholder="Declaration" id="declaration"></textarea>
+    <textarea class="form-control mb-2" placeholder="Projects (one per line)" id="project"></textarea>
+
+    <!-- Profile Photo Upload -->
+    <div class="mb-3" id="photoDiv">
+      <label for="profilePhoto" class="form-label fw-bold">Upload Profile Photo</label>
+      <input type="file" class="form-control" id="profilePhoto" accept="image/*">
+      <div id="previewPhoto"><span>No Photo</span></div>
+    </div>
+
+    <button type="button" class="btn btn-success w-100 fw-bold" onclick="generatePDF()">Generate PDF</button>
+  </form>
+</div>
+</div>
+
+<script>
+let selectedTemplate = null;
+let profileImgData = null;
+const fields = ["name","email","phone","objective","skills","experience","academic","certifications","linkedin","github","strengths","declaration","project"];
+
+// Show templates
+document.getElementById("showTemplatesBtn").addEventListener("click", () => {
+  document.getElementById("templatesSection").classList.remove("d-none");
+  document.getElementById("showTemplatesBtnDiv").classList.add("d-none");
+  window.scrollTo({ top: document.getElementById("templatesSection").offsetTop, behavior: "smooth" });
+});
+
+// Select template
+function selectTemplate(template){
+  selectedTemplate = template;
+  document.getElementById("resumeFormSection").classList.remove("d-none");
+  document.getElementById("templatesSection").classList.add("d-none");
+  document.getElementById("photoDiv").style.display = (template === "template3") ? "block" : "none";
+  window.scrollTo({ top: document.getElementById("resumeFormSection").offsetTop, behavior: "smooth" });
+}
+
+// Back to templates
+document.getElementById("backBtn").addEventListener("click", () => {
+  document.getElementById("resumeFormSection").classList.add("d-none");
+  document.getElementById("templatesSection").classList.remove("d-none");
+  selectedTemplate = null;
+});
+
+// Profile photo preview
+document.getElementById("profilePhoto").addEventListener("change", function(event){
+  const file = event.target.files[0];
+  const previewDiv = document.getElementById("previewPhoto");
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      profileImgData = e.target.result;
+      previewDiv.innerHTML = `<img src="${profileImgData}" alt="Profile Photo">`;
+    };
+    reader.readAsDataURL(file);
+  } else {
+    profileImgData = null;
+    previewDiv.innerHTML = '<span>No Photo</span>';
+  }
+});
+
+// Generate PDF with bar-style sections
+function generatePDF(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  let y = 20;
+  const x = 10;
+  const barHeight = 12;
+  const barSpacing = 6;
+  const barWidth = 180;
+
+  const data = {};
+  fields.forEach(f => data[f] = document.getElementById(f).value);
+
+  // Profile photo at top-left
+  if(selectedTemplate === "template3" && profileImgData){
+    doc.addImage(profileImgData, 'JPEG', x, y, 40, 40);
+    doc.setFontSize(16);
+    doc.text(data.name, x + 50, y + 15);
+    y += 50;
+  } else {
+    doc.setFontSize(16);
+    doc.text(data.name, x, y);
+    y += 15;
+  }
+
+  doc.setFontSize(12);
+
+  fields.forEach(f => {
+    if(f === "name") return;
+    if(f === "project" && data.project){
+      doc.rect(x, y, barWidth, barHeight, 'S');
+      doc.text("Projects:", x + 2, y + 9);
+      y += barHeight + 2;
+      data.project.split("\n").forEach(p => {
+        if(p.trim() !== ""){
+          doc.rect(x, y, barWidth, barHeight, 'S');
+          doc.text("- " + p, x + 2, y + 9);
+          y += barHeight + 2;
+        }
+      });
+    } else if(data[f].trim() !== ""){
+      doc.rect(x, y, barWidth, barHeight, 'S');
+      doc.text(`${f.charAt(0).toUpperCase() + f.slice(1)}: ${data[f]}`, x + 2, y + 9);
+      y += barHeight + barSpacing;
+    }
+  });
+
+  doc.save("resume.pdf");
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

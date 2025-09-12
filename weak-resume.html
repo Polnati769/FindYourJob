@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weak Resume Guide</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding-top: 70px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  }
+
+  /* Sticky Navbar */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #1b2a47;
+  }
+  nav a {
+    color: #fff;
+    font-weight: 600;
+    margin-right: 20px;
+    text-decoration: none;
+  }
+  nav a:hover { color: #00d8ff; }
+
+  h1.section-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #ffdd59;
+  }
+
+  /* Cards */
+  .card-custom {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card-custom:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+  }
+  .card-custom h6 {
+    color: #00d8ff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-custom p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .card-custom a {
+    color: #00d8ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Zigzag Layout for First Two Cards Only */
+  .row-zz { display: flex; flex-wrap: wrap; align-items: center; }
+  .row-zz .col-md-6 { padding: 15px; }
+
+  /* Back to Top Button */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ffdd59;
+    color: #1b2a47;
+    border: none;
+    border-radius: 50%;
+    padding: 12px 16px;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  #backToTop:hover { transform: scale(1.2); opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="p-3 d-flex justify-content-center">
+  <a href="#weak-resume">Weak Resume</a>
+</nav>
+
+<!-- Weak Resume Section -->
+<section id="weak-resume">
+  <h1 class="section-title" data-aos="fade-down">📄 Weak Resume Insights</h1>
+  
+  <div class="container">
+
+    <!-- Zigzag First Card Row -->
+    <div class="row row-zz" data-aos="fade-right">
+      <div class="col-md-6">
+        <div class="card-custom">
+          <h6><i class="fas fa-search"></i> How to Identify Weak Resume?</h6>
+          <p>Look for missing achievements, poor formatting, lack of keywords, and unclear structure. If recruiters skip over your resume quickly, it's a sign.</p>
+        </div>
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+
+    <!-- Zigzag Second Card Row -->
+    <div class="row row-zz" data-aos="fade-right">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <div class="card-custom">
+          <h6><i class="fas fa-key"></i> Keywords for Companies</h6>
+          <p>Click a company to see keywords you should use in your resume:</p>
+          <ul>
+            <li><a href="#company-google">Google</a></li>
+            <li><a href="#company-microsoft">Microsoft</a></li>
+            <li><a href="#company-amazon">Amazon</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company Keywords Section (Full-width Cards) -->
+    <div class="row row-custom" id="company-google" data-aos="fade-left">
+      <div class="col-md-12">
+        <div class="card-custom">
+          <h6><i class="fab fa-google"></i> Google Keywords</h6>
+          <p>Focus on: Data Analysis, Machine Learning, Problem Solving, Collaboration, Cloud Computing</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-custom" id="company-microsoft" data-aos="fade-left">
+      <div class="col-md-12">
+        <div class="card-custom">
+          <h6><i class="fab fa-microsoft"></i> Microsoft Keywords</h6>
+          <p>Focus on: Azure, C#, Team Projects, Agile, Leadership, Communication</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-custom" id="company-amazon" data-aos="fade-left">
+      <div class="col-md-12">
+        <div class="card-custom">
+          <h6><i class="fab fa-amazon"></i> Amazon Keywords</h6>
+          <p>Focus on: Customer Obsession, Leadership Principles, Data-driven, Process Improvement, Innovation</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Back to Top Button -->
+<button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+
+  // Back to Top
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+</body>
+</html>

@@ -1,286 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DreamJob - Employers</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding-top: 70px;
-    background: #0d1b2a;
-    color: #fff;
-    scroll-behavior: smooth;
-  }
-
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #1b2a47;
-  }
-  nav a {
-    color: #fff;
-    font-weight: 600;
-    margin-right: 20px;
-    text-decoration: none;
-  }
-  nav a:hover { color: #00d8ff; }
-
-  h1, h2 {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamJob - Job Roles by Sector</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding-top: 70px;
+    }
+      h1 {
+    color: bisque;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 40px;
   }
-  h1 { color: #ffdd59; }
-  h2 { color: #00d8ff; }
+   h2 {
+  text-align: center;
+  margin: 40px 0;
+  font-weight: bold;
+  color:#00fff6; /* Changed from #72077a */
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
 
-  .diamond-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 50px;
-  }
+    .role-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      text-align: center;
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      min-height: 200px;
+    }
+    .role-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 216, 255, 0.3);
+    }
+    .role-card i {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #00d8ff;
+    }
+    /* ---------------- EMPLOYERS DIAMOND CSS ---------------- */
+    #employers {
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-  .diamond-card {
-    width: 180px;
-    height: 180px;
-    transform: rotate(45deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: transform 0.4s, box-shadow 0.4s;
-    cursor: pointer;
-    position: relative;
-  }
-  .diamond-card:hover {
-    transform: rotate(45deg) scale(1.1);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.7);
-  }
-  .diamond-card span {
-    transform: rotate(-45deg);
-    display: block;
-    padding: 10px;
-  }
+    #employers h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+      
+    }
 
-  .badge-custom {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-45deg);
-    background: rgba(0,0,0,0.6);
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-  }
+    .diamond-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
 
-  .icon-top {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-45deg);
-    font-size: 1.5rem;
-  }
+    .diamond-card {
+      width: 120px;
+      height: 120px;
+      transform: rotate(45deg);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
 
-  .role-section {
-    text-align: center;
-    margin: 60px 0;
-  }
-  .role-section button {
-    margin: 10px;
-    padding: 15px 25px;
-    border-radius: 10px;
-    border: none;
-    background: #ffdd59;
-    color: #1b2a47;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
-  }
-  .role-section button:hover {
-    background: #00d8ff;
-    color: #fff;
-    transform: scale(1.1);
-  }
+    .diamond-card:hover {
+      transform: rotate(45deg) scale(1.1);
+    }
 
-  .bg1 { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-  .bg2 { background: linear-gradient(135deg, #6a3093, #a044ff); }
-  .bg3 { background: linear-gradient(135deg, #f7971e, #ffd200); }
-  .bg4 { background: linear-gradient(135deg, #56ab2f, #a8e063); }
-  .bg5 { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
-  .bg6 { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+    /* Inner content upright */
+    .diamond-card span,
+    .diamond-card .icon-top {
+      transform: rotate(-45deg);
+      display: block;
+      text-align: center;
+      color: white;
+    }
+
+    .icon-top {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .diamond-card span {
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      display: block;
+    }
+    /* Backgrounds for sectors */
+    .bg1 { background: linear-gradient(135deg, #007bff, #00c6ff); }
+    .bg2 { background: linear-gradient(135deg, #ff6f61, #ff9966); }
+    .bg3 { background: linear-gradient(135deg, #28a745, #85d68c); }
+    .bg4 { background: linear-gradient(135deg, #ff4081, #ff80ab); }
+    .bg5 { background: linear-gradient(135deg, #6f42c1, #9d6dff); }
+    .bg6 { background: linear-gradient(135deg, #ffc107, #ffd966); }
 </style>
 </head>
 <body>
+  
+<!-- Footer -->
+<footer class="text-center py-4" style="background: rgba(0,0,0,0.6); border-top: 1px solid rgba(255,255,255,0.2);">
+  <h3 style="color: #ff6f61; margin: 0; font-weight: bold;">For Employers</h3>
+</footer>
 
-<nav class="p-3 d-flex justify-content-center">
-  <a href="#employers">Employers</a>
-  <a href="#roles">Choose Your Role</a>
-</nav>
 
-<section id="employers">
-  <h1 data-aos="fade-down">💼 Employers Who Recruit</h1>
-  <div class="diamond-container">
-
-    <div class="diamond-card bg1" data-bs-toggle="modal" data-bs-target="#techModal" data-aos="fade-up" data-aos-delay="100">
-      <div class="icon-top"><i class="fas fa-laptop-code"></i></div>
-      <span>Tech Giants</span>
-      <div class="badge-custom">3-10 yrs</div>
-    </div>
-
-    <div class="diamond-card bg2" data-bs-toggle="modal" data-bs-target="#startupModal" data-aos="fade-up" data-aos-delay="200">
-      <div class="icon-top"><i class="fas fa-rocket"></i></div>
-      <span>Startups</span>
-      <div class="badge-custom">1-5 yrs</div>
-    </div>
-
-    <div class="diamond-card bg3" data-bs-toggle="modal" data-bs-target="#financeModal" data-aos="fade-up" data-aos-delay="300">
-      <div class="icon-top"><i class="fas fa-chart-line"></i></div>
-      <span>Finance</span>
-      <div class="badge-custom">2-8 yrs</div>
-    </div>
-
-    <div class="diamond-card bg4" data-bs-toggle="modal" data-bs-target="#healthModal" data-aos="fade-up" data-aos-delay="400">
-      <div class="icon-top"><i class="fas fa-heartbeat"></i></div>
-      <span>Healthcare</span>
-      <div class="badge-custom">2-7 yrs</div>
-    </div>
-
-    <div class="diamond-card bg5" data-bs-toggle="modal" data-bs-target="#consultModal" data-aos="fade-up" data-aos-delay="500">
-      <div class="icon-top"><i class="fas fa-briefcase"></i></div>
-      <span>Consulting</span>
-      <div class="badge-custom">3-10 yrs</div>
-    </div>
-
-    <div class="diamond-card bg6" data-bs-toggle="modal" data-bs-target="#govModal" data-aos="fade-up" data-aos-delay="600">
-      <div class="icon-top"><i class="fas fa-university"></i></div>
-      <span>Government</span>
-      <div class="badge-custom">1-10 yrs</div>
-    </div>
-
-  </div>
-</section>
-
-<section id="roles" class="role-section">
-  <h2 data-aos="fade-right">🎯 Choose Your Role Based on Your Skill</h2>
-  <button data-aos="zoom-in" data-aos-delay="100">Developer</button>
-  <button data-aos="zoom-in" data-aos-delay="200">Designer</button>
-  <button data-aos="zoom-in" data-aos-delay="300">Data Analyst</button>
-  <button data-aos="zoom-in" data-aos-delay="400">Marketing</button>
-  <button data-aos="zoom-in" data-aos-delay="500">Sales</button>
-  <button data-aos="zoom-in" data-aos-delay="600">Manager</button>
-</section>
-
-<!-- Modals (same as before) -->
-<div class="modal fade" id="techModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Tech Giants</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  <section id="employers">
+    <h1 data-aos="fade-down">🌟 Top Employers Hiring Talent in Particular Sectors</h1>
+    <div class="diamond-container">
+      <!-- Tech -->
+      <div class="diamond-card bg1" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-top"><i class="fas fa-laptop-code"></i></div>
+        <span>IT</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p><strong>Companies:</strong> Google, Microsoft, Apple</p>
-        <p><strong>Experience:</strong> 3-10 years</p>
-        <p><strong>Highlights:</strong> High pay, innovative projects, global opportunities.</p>
+      <!-- Startups -->
+      <div class="diamond-card bg2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="icon-top"><i class="fas fa-rocket"></i></div>
+        <span>Startups</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+        </div>
+      </div>
+      <!-- Finance -->
+      <div class="diamond-card bg3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="icon-top"><i class="fas fa-chart-line"></i></div>
+        <span>Finance</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <!-- Healthcare -->
+      <div class="diamond-card bg4" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-top"><i class="fas fa-heartbeat"></i></div>
+        <span>Healthcare</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+        </div>
+      </div>
+      <!-- Consulting -->
+      <div class="diamond-card bg5" data-aos="zoom-in" data-aos-delay="500">
+        <div class="icon-top"><i class="fas fa-briefcase"></i></div>
+        <span>Consulting</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+        </div>
+      </div>
+      <!-- Government -->
+      <div class="diamond-card bg6" data-aos="zoom-in" data-aos-delay="600">
+        <div class="icon-top"><i class="fas fa-university"></i></div>
+        <span>Government</span>
+        <div class="exp-level">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="modal fade" id="startupModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-purple text-white">
-        <h5 class="modal-title">Startups</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Companies:</strong> Stripe, Notion, Figma</p>
-        <p><strong>Experience:</strong> 1-5 years</p>
-        <p><strong>Highlights:</strong> Fast growth, dynamic roles, flexible environment.</p>
-      </div>
+     
+  <!-- Tech Giants -->
+  <section class="container sector-section">
+    <h1 data-aos="fade-right">🎯 Choose Your Role Based on Your Skills</h2>
+    <h2 data-aos="fade-down"><i class="fas fa-laptop-code"></i> IT</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-code"></i><h5>Software Engineer</h5><p>IT</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-database"></i><h5>Data Scientist</h5><p>IT</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-network-wired"></i><h5>Cloud Engineer</h5><p>IT</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-robot"></i><h5>AI Engineer</h5><p>Tech Giants</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-lock"></i><h5>Cybersecurity Analyst</h5><p>IT</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-vr-cardboard"></i><h5>AR/VR Developer</h5><p>IT</p></div></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="modal fade" id="financeModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-warning text-dark">
-        <h5 class="modal-title">Finance Companies</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Companies:</strong> JPMorgan, Goldman Sachs, CitiBank</p>
-        <p><strong>Experience:</strong> 2-8 years</p>
-        <p><strong>Highlights:</strong> High salaries, career growth, corporate environment.</p>
-      </div>
+  <!-- Startups -->
+  <section class="container sector-section">
+    <h2 data-aos="fade-down"><i class="fas fa-rocket"></i> Startups</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-lightbulb"></i><h5>Product Manager</h5><p>Startups</p><div class="exp-dots"><div class="dot active"></div><div class="dot active"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-user-astronaut"></i><h5>Growth Hacker</h5><p>Startups</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-laptop-code"></i><h5>Full-Stack Developer</h5><p>Startups</p><div class="exp-dots"><div class="dot active"></div><div class="dot active"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-comments"></i><h5>Community Manager</h5><p>Startups</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-bullhorn"></i><h5>Marketing Strategist</h5><p>Startups</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-hand-holding-usd"></i><h5>Investor Relations</h5><p>Startups</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="modal fade" id="healthModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title">Healthcare</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Companies:</strong> Pfizer, Johnson & Johnson, Medtronic</p>
-        <p><strong>Experience:</strong> 2-7 years</p>
-        <p><strong>Highlights:</strong> Impactful work, stable industry, innovative research.</p>
-      </div>
+  <!-- Finance -->
+  <section class="container sector-section">
+    <h2 data-aos="fade-down"><i class="fas fa-chart-line"></i> Finance</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-coins"></i><h5>Investment Banker</h5><p>Finance</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-calculator"></i><h5>Chartered Accountant</h5><p>Finance</p><div class="exp-dots"><div class="dot active"></div><div class="dot active"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-wallet"></i><h5>Financial Analyst</h5><p>Finance</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-landmark"></i><h5>Banking Officer</h5><p>Finance</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-chart-pie"></i><h5>Portfolio Manager</h5><p>Finance</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-coins"></i><h5>Risk Analyst</h5><p>Finance</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot active"></div></div></div></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="modal fade" id="consultModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title">Consulting Firms</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Companies:</strong> McKinsey, BCG, Deloitte</p>
-        <p><strong>Experience:</strong> 3-10 years</p>
-        <p><strong>Highlights:</strong> High-profile projects, travel, leadership roles.</p>
-      </div>
+  <!-- Healthcare -->
+  <section class="container sector-section">
+    <h2 data-aos="fade-down"><i class="fas fa-heartbeat"></i> Healthcare</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-user-md"></i><h5>Doctor</h5><p>Healthcare</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-stethoscope"></i><h5>Nurse</h5><p>Healthcare</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-vials"></i><h5>Lab Technician</h5><p>Healthcare</p><div class="exp-dots"><div class="dot active"></div><div class="dot active"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-dna"></i><h5>Biotech Researcher</h5><p>Healthcare</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-pills"></i><h5>Pharmacist</h5><p>Healthcare</p><div class="exp-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-heart"></i><h5>Healthcare Administrator</h5><p>Healthcare</p><div class="exp-dots"><div class="dot"></div><div class="dot active"></div><div class="dot active"></div></div></div></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="modal fade" id="govModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-header bg-info text-white">
-        <h5 class="modal-title">Government</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Agencies:</strong> NASA, ISRO, State Governments</p>
-        <p><strong>Experience:</strong> 1-10 years</p>
-        <p><strong>Highlights:</strong> Stable jobs, benefits, national impact projects.</p>
-      </div>
+  <!-- Consulting -->
+  <section class="container sector-section">
+    <h2 data-aos="fade-down"><i class="fas fa-briefcase"></i> Consulting</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-chart-bar"></i><h5>Business Consultant</h5><p>Consulting</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-tasks"></i><h5>Project Consultant</h5><p>Consulting</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-users"></i><h5>HR Consultant</h5><p>Consulting</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-cogs"></i><h5>IT Consultant</h5><p>Consulting</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-globe"></i><h5>Strategy Consultant</h5><p>Consulting</p>></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-chart-pie"></i><h5>Financial Consultant</h5><p>Consulting</p></div></div>
     </div>
-  </div>
-</div>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-</script>
+  <!-- Government -->
+  <section class="container sector-section">
+    <h2 data-aos="fade-down"><i class="fas fa-university"></i> Government</h2>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-gavel"></i><h5>Civil Services Officer</h5><p>Government</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-clipboard-list"></i><h5>Public Policy Analyst</h5><p>Government</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-balance-scale"></i><h5>Judicial Services</h5><p>Government</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in"><div class="role-card"><i class="fas fa-shield-alt"></i><h5>Defence Services</h5><p>Government</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="role-card"><i class="fas fa-chalkboard-teacher"></i><h5>Government Teacher</h5><p>Government</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="role-card"><i class="fas fa-stamp"></i><h5>Administrative Officer</h5><p>Government</p></div></div>
+    </div>
+  </section>
+  <hr>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
 </body>
 </html>

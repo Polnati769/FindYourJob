@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +30,7 @@
       flex: 1; /* Push footer to bottom */
     }
 
-    /* Optional Particle Background Container */
+    /* Particle Background */
     #particles-js {
       position: fixed;
       width: 100%;
@@ -49,14 +48,8 @@
     }
 
     @keyframes fadeDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Card Styles */
@@ -99,37 +92,52 @@
       100% { transform: translateY(0); }
     }
 
-    /* Links & Navbar */
-    a.text-dark {
-      color: #ffffff !important;
-    }
+    /* Navbar Styling */
+    a.text-dark { color: #ffffff !important; }
+    a.nav-link.active { font-weight: bold; color: #00d8ff !important; }
 
-    a.nav-link.active {
-      font-weight: bold;
-      color: #00d8ff !important;
-    }
-
-    .navbar, footer {
+    .navbar {
       background-color: #004d7a;
+      padding: 0.3rem 1rem;
+      font-size: 0.9rem;
     }
 
     .navbar-brand {
       color: #ffffff !important;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
-    footer p {
-      color: #cccccc;
-    }
-
-    .nav-link {
+    .navbar-nav .nav-link {
       color: #cccccc !important;
+      margin-left: 10px; 
+      font-size: 0.9rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
     }
+
+    .navbar-nav .nav-link.active {
+      font-weight: bold;
+      color: #00d8ff !important;
+    }
+
+    /* Footer Styling (like contact page) */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #222;
+      text-align: center;
+      font-size: 14px;
+      padding: 8px 0;
+      z-index: 1000;
+    }
+    footer p { margin: 0; }
   </style>
 </head>
 <body>
-  <!-- Optional Particle Background -->
+  <!-- Particle Background -->
   <div id="particles-js"></div>
 
   <!-- Navbar -->
@@ -208,10 +216,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+    AOS.init({ duration: 1000, once: true });
   </script>
 </body>
 </html>
